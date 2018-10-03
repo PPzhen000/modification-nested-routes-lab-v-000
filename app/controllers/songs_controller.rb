@@ -33,6 +33,7 @@ class SongsController < ApplicationController
       @artist = Artist.find_by(id: params[:artist_id])
       @song = Song.new(song_params)
       @song.artist = @artist
+      @song.save 
     else
       @song = Song.new(song_params)
 
@@ -41,7 +42,7 @@ class SongsController < ApplicationController
       else
         render :new
       end
-    end 
+    end
   end
 
   def edit
