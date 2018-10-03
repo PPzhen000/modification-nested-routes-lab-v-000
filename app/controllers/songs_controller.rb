@@ -29,19 +29,12 @@ class SongsController < ApplicationController
   end
 
   def create
-    if params[:artist_id]
-      @artist = Artist.find_by(id: params[:artist_id])
-      @song = Song.new(song_params)
-      @song.artist = @artist
-      @song.save 
-    else
-      @song = Song.new(song_params)
+    @song = Song.new(song_params)
 
-      if @song.save
-        redirect_to @song
-      else
-        render :new
-      end
+    if @song.save
+      redirect_to @song
+    else
+      render :new
     end
   end
 
